@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  mongo:
+    image: mvertes/alpine-mongo:latest
+  redis:
+    image: redis:alpine
+  crud-manager-api:
+    image: crud-manager-api:latest
+    build: ./crud-manager-api
+    environment:
+      MONGO_CONNECTION_STRING: "mongodb://mongo:27017/test"
+      SERVER_INSTANCE_COUNT: 2
+      SERVER_PORT: 8000
+    ports:
+      - 8000:8000
