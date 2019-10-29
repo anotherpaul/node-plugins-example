@@ -1,16 +1,14 @@
-const createController = require('./controller');
+const init = require('./init');
+const resourceDescription = {
+  name: 'npmplugins',
+  properties: {
+    name: { type: 'string', required: true, unique: true },
+    packageUrl: { type: 'string', required: true, unique: true },
+  },
+  route: '/npm-plugins',
+};
 
-function createNpmPluginsResource(dependencies) {
-  return {
-    name: 'npmplugins',
-    properties: {
-      name: { type: 'string', required: true, unique: true },
-      properties: { type: 'object', required: true },
-      route: { type: 'string', required: true },
-    },
-    route: '/npm-plugins',
-    createController: createController(dependencies),
-  };
-}
-
-module.exports = createNpmPluginsResource;
+module.exports = {
+  init,
+  resourceDescription,
+};

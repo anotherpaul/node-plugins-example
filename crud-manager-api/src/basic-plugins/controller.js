@@ -6,7 +6,6 @@ const pub = new Redis(config.redisConfig);
 const sub = new Redis(config.redisConfig);
 
 function wrapCreateController(dependencies) {
-  sub.subscribe();
   function createController({ base, logger }) {
     sub.subscribe(config.newPluginChannel);
     sub.on('message', (channel, message) => {
