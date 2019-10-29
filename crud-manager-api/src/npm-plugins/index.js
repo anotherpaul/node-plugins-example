@@ -1,16 +1,16 @@
 const createController = require('./controller');
 
-function createPluginsResource(dependencies) {
+function createNpmPluginsResource(dependencies) {
   return {
-    name: 'plugins',
+    name: 'npmplugins',
     properties: {
       name: { type: 'string', required: true, unique: true },
       properties: { type: 'object', required: true },
       route: { type: 'string', required: true },
     },
-    route: '/plugins',
+    route: '/npm-plugins',
     createController: createController(dependencies),
   };
 }
 
-module.exports = createPluginsResource;
+module.exports = createNpmPluginsResource;

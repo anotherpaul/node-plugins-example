@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const crudmaker = require('crudmaker');
 const createLogger = require('./logger');
 const config = require('./config');
-const createPluginsResource = require('./plugins');
+const createBasicPluginsResource = require('./basic-plugins');
+const createNpmPluginsResource = require('./npm-plugins');
 
 const logger = createLogger();
 
@@ -19,7 +20,8 @@ async function startApp() {
       useUnifiedTopology: true,
     });
     server.use(bodyParser.json());
-    crudmaker.create({ resource: createPluginsResource(dependencies), dependencies });
+    crudmaker.create({ resource: createBasicPluginsResource(dependencies), dependencies });
+    crudmaker.create({ resource: createNpmPluginsResource(dependencies), dependencies });
     server.listen(config.serverPort, () => logger.log(`server is listening on port ${config.serverPort}`));
   } catch (err) {
     logger.error(err.message || err.toString());
