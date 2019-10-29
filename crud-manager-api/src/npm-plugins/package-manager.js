@@ -4,8 +4,10 @@ const originalNpm = require('npm');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const createNpmPromise = require('./npm-promise');
+const config = require('../config');
+const logger = require('../logger')();
 
-function createPackageManager({ logger, config }) {
+function createPackageManager() {
   const npm = createNpmPromise({ npm: originalNpm, exec: promisify(exec), config });
 
   function loadPackage(packageName) {

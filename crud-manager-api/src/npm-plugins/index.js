@@ -1,4 +1,5 @@
 const init = require('./init');
+
 const resourceDescription = {
   name: 'npmplugins',
   properties: {

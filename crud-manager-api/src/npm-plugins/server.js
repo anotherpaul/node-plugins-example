@@ -1,7 +1,7 @@
 const multer = require('multer');
 const validator = require('./validator');
 const config = require('../config');
-const logger = require('../logger');
+const logger = require('../logger')();
 
 function addUploadRoute(server, uploadPackage) {
   const storage = multer.diskStorage({

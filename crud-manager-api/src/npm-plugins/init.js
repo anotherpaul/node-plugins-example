@@ -2,7 +2,7 @@ const Redis = require('ioredis');
 const crudmaker = require('crudmaker');
 
 const config = require('../config');
-const logger = require('../logger');
+const logger = require('../logger')();
 const addUploadRoute = require('./server');
 const createPackageManager = require('./package-manager');
 
@@ -10,7 +10,7 @@ async function init({ dependencies }) {
   const pub = new Redis(config.redisConfig);
   const sub = new Redis(config.redisConfig);
 
-  const packageManager = createPackageManager({ logger, config });
+  const packageManager = createPackageManager();
 
   async function processUploadedPackage(installInfo) {
     logger.debug(`new npm plugin: ${installInfo.name}`);
