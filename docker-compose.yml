@@ -8,9 +8,16 @@ services:
   crud-manager-api:
     image: crud-manager-api:latest
     build: ./crud-manager-api
+    volumes:
+      - package-files-volume:/package-files
+      - packages-volume:/packages
     environment:
       MONGO_CONNECTION_STRING: "mongodb://mongo:27017/test"
       SERVER_INSTANCE_COUNT: 2
       SERVER_PORT: 8000
     ports:
       - 8000:8000
+
+volumes:
+  package-files-volume:
+  packages-volume:

@@ -27,7 +27,7 @@ async function startApp() {
     crudmaker.create({ resource: createBasicPluginsResource(dependencies), dependencies });
     crudmaker.create({ resource: npmPluginsResource.resourceDescription, dependencies });
     await npmPluginsResource.init({ dependencies });
-    server.listen(config.serverPort, () => logger.log(`server is listening on port ${config.serverPort}`));
+    server.listen(config.server.port, () => logger.log(`server is listening on port ${config.server.port}`));
   } catch (err) {
     logger.error(err.message || err.toString());
     setTimeout(startApp, config.serverInitIntervalMs);
