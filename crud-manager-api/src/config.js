@@ -1,5 +1,3 @@
-const path = require('path');
-
 const { env } = process;
 
 module.exports = {
@@ -14,5 +12,4 @@ module.exports = {
   newNpmPluginChannel: env.NEW_NPM_PLUGIN_CHANNEL || 'new_npm_plugin',
   filePath: env.PACKAGE_FILE_PATH || '/package-files',
   installPath: env.PACKAGE_INSTALL_PATH || '/packages',
-  templatePath: path.resolve(__dirname, './npm-plugins/package.json.template'),
 };
